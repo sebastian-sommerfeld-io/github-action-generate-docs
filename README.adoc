@@ -40,7 +40,7 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
   uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@main
 ----
 
-== About the Docker Base Image
+=== About the Docker Base Image (= `sommerfeldio/shdoc`)
 This Github Action uses its own Base Image which is link:https://hub.docker.com/r/sommerfeldio/shdoc[hosted at Dockerhub]. The base image ships with all packages necessary for link:https://github.com/reconquest/shdoc[shdoc]. The image supports standalone usage as well.
 
 [source, bash]

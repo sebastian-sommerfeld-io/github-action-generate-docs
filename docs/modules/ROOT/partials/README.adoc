@@ -17,7 +17,7 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
 == Example usage
 [source, yaml]
 ----
-- name: Adjust version in antora.yml
+- name: Generate docs from bash scripts
   uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@main
 ----
 
