@@ -1,4 +1,7 @@
-FROM sommerfeldio/git:ci-build
+#
+# Install dependencies
+#
+FROM sommerfeldio/git:ci-build AS build
 LABEL maintainer="sebastian@sommerfeld.io"
 
 USER root
@@ -8,8 +11,18 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && git clone --recursive https://github.com/reconquest/shdoc /tmp/shdoc
+
 WORKDIR /tmp/shdoc
 RUN make install
 
 USER sebastian
-COPY assets/index-template.adoc /home/sebastian/index-template.adoc
+COPY assets/index-template.adoc /tmp/index-template.adoc
+
+#
+# Expose actions scripts as entrypoint
+#
+FROM sommerfeldio/shdoc:ci-build AS run
+LABEL maintainer="sebastian@sommerfeld.io"
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
