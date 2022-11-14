@@ -21,7 +21,7 @@ COPY assets/index-template.adoc /tmp/index-template.adoc
 #
 # Expose actions scripts as entrypoint
 #
-FROM sommerfeldio/shdoc:ci-build AS run
+FROM sommerfeldio/git:ci-build AS run
 LABEL maintainer="sebastian@sommerfeld.io"
 
 COPY entrypoint.sh /entrypoint.sh

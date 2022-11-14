@@ -58,8 +58,8 @@ function generateDocs() {
 
   echo -e "$LOG_INFO [Step 1/3] Generate '$ANTORA_MODULE/pages/$DOCS_FILE_PATTERN.md' from '$SH_FILE"
   shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$MD_FILE"
-  # todo ... remove first line from md
   # todo ... translate md to adoc
+  # todo ... remove first line from temp-adoc
 
   echo -e "$LOG_INFO [Step 2/3] Create $ANTORA_MODULE/pages/$ADOC_FILE"
   mkdir -p "$ANTORA_MODULE/pages/$DOCS_PATH"
