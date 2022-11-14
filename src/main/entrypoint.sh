@@ -81,7 +81,7 @@ function generateDocs() {
   ) >> "$ANTORA_MODULE/pages/$ADOC_FILE"
 
   echo "[INFO] [Step 3/3] Remove markdown file"
-  rm "$ANTORA_MODULE/pages/$MD_FILE"
+  # rm "$ANTORA_MODULE/pages/$MD_FILE"
 }
 export -f generateDocs
 
