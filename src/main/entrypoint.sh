@@ -23,6 +23,7 @@ ANTORA_YML="docs/antora.yml"
 export ANTORA_MODULE_NAME="auto-generated-bash-docs"
 export ANTORA_MODULE="docs/modules/$ANTORA_MODULE_NAME"
 
+export -f shdoc
 
 
 
@@ -57,7 +58,6 @@ function generateDocs() {
   fi
 
   echo "[INFO] [Step 1/3] Generate '$ANTORA_MODULE/pages/$MD_FILE' from '$SH_FILE"
-  cat "$SH_FILE"
   shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$MD_FILE"
   # todo ... translate md to adoc
   # todo ... remove first line from temp-adoc (still named *.md)
