@@ -130,7 +130,7 @@ jobs:
       - name: Docker image build (actions image)
         uses: docker/build-push-action@v3
         with:
-          context: ./src/main
+          context: ./src/main/action
           platforms: linux/amd64
           push: false
 
