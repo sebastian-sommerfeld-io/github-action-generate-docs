@@ -59,7 +59,7 @@ function generateDocs() {
   echo "[INFO] [Step 1/3] Generate '$ANTORA_MODULE/pages/$MD_FILE' from '$SH_FILE"
   shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$MD_FILE"
   # todo ... translate md to adoc
-  # todo ... remove first line from temp-adoc
+  # todo ... remove first line from temp-adoc (still named *.md)
 
   echo "[INFO] [Step 2/3] Create $ANTORA_MODULE/pages/$ADOC_FILE"
   mkdir -p "$ANTORA_MODULE/pages/$DOCS_PATH"
@@ -118,13 +118,13 @@ function generateNav() {
 }
 
 
-echo "[INFO] Version ..."
+echo "[INFO] Version"
 shdoc --version
 
-echo "[INFO] Current dir = $(pwd)"
-echo "[INFO] Inside this folder is ..."
+echo "[INFO] Contents of current dir '$(pwd)'"
 ls -alF
 
+echo "[INFO] whoami = $(whoami)"
 
 echo "[INFO] Initialize directory structure"
 rm -rf "$ANTORA_MODULE"
