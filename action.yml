@@ -1,0 +1,6 @@
+---
+name: Generate Docs from Bash Scripts
+description: Github Action to auto-generate Antora module with Asciicoc contents based on inline-docs from bash script. Inline-docs must comply to shdoc (https://github.com/reconquest/shdoc).
+runs:
+  using: 'docker'
+  image: 'src/main/action/Dockerfile'

@@ -1,0 +1,4 @@
+= Github-Action: Update antora.yml
+include::ROOT:partial$vars.adoc[]
+
+include::ROOT:partial$README.adoc[]

@@ -1,0 +1,7 @@
+---
+name: github-action-docs-from-bash-scripts-yml
+title: Github-Action Generate Docs from Bash Scripts
+version: main
+start_page: ROOT:index.adoc
+nav:
+  - modules/ROOT/nav.adoc

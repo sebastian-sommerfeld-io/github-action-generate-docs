@@ -1,0 +1,34 @@
+Github Action to auto-generate Antora module with Asciicoc contents based on inline-docs from bash script. Inline-docs must comply to link:https://github.com/reconquest/shdoc[shdoc].
+
+image:{github-actions-url}/{job-generate-docs}/{badge}[Github Badge, link={github-actions-url}/{job-generate-docs}]
+image:{github-actions-url}/{job-ci}/{badge}[Github Badge, link={github-actions-url}/{job-ci}]
+image:{github-actions-url}/{job-release}/{badge}[Github Badge, link={github-actions-url}/{job-release}]
+
+* Github Repository -> {url-project}
+* Documentation -> https://www.sommerfeld.io/docs/github-actions/{project-name}-docs/main
+* Where to file issues -> {url-project}/issues
+
+== Inputs
+_No inputs specified_
+
+== Outputs
+A new Antora module in `docs/modules/auto-generated-bash-docs` folder with generated asciidoc contents.
+
+== Example usage
+[source, yaml]
+----
+- name: Adjust version in antora.yml
+  uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@main
+----
+
+== Risks and Technical Debts
+Scale for Probability and Impact: Low, Medium and High
+
+[cols="^1,2,5a,1,1,5a", options="header"]
+|===
+|# |Title |Description |Probability |Impact |Response
+|{counter:usage} |- |- |- |- |-
+|===
+
+== Contact
+Feel free to contact me via sebastian@sommerfeld.io or visit my website https://www.sommerfeld.io.
