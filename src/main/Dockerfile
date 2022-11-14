@@ -15,7 +15,6 @@ RUN apt-get update \
 WORKDIR /tmp/shdoc
 RUN make install
 
-USER sebastian
 COPY assets/index-template.adoc /tmp/index-template.adoc
 
 #
