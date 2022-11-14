@@ -17,8 +17,19 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
 == Example usage
 [source, yaml]
 ----
+- name: Checkout code
+  uses: actions/checkout@v3
+
 - name: Generate docs from bash scripts
   uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@main
+
+- name: Commit and push
+  uses: EndBug/add-and-commit@v9
+  with:
+    author_name: your-name
+    author_email: you@example.com
+    message: "your commit message"
+    add: docs/modules
 ----
 
 == About the Docker Base Image
