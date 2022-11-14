@@ -49,7 +49,7 @@ function generateDocs() {
   DOCS_FILE_PATTERN="${SH_FILE/"$old"/"$new"}" # change .sh to -sh
 
   ADOC_FILE="$DOCS_FILE_PATTERN.adoc"
-  MD_FILE="$DOCS_FILE_PATTERN.adoc"
+  MD_FILE="$DOCS_FILE_PATTERN.md"
 
   DOCS_PATH=${DOCS_FILE_PATTERN%/*}
   if [ "$DOCS_PATH" = "$DOCS_FILE_PATTERN" ]; then
@@ -77,11 +77,11 @@ function generateDocs() {
     echo "// +-----------------------------------------------+"
     echo
 
-    cat "$MD_FILE"
+    cat "$ANTORA_MODULE/pages/$MD_FILE"
   ) >> "$ANTORA_MODULE/pages/$ADOC_FILE"
 
-  echo "[INFO] [Step 3/3] Remove all markdown files"
-  find "docs" -name "*.md" -exec rm {} +
+  echo "[INFO] [Step 3/3] Remove markdown file"
+  rm "$ANTORA_MODULE/pages/$MD_FILE"
 }
 export -f generateDocs
 
