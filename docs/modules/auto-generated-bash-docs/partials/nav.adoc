@@ -1,0 +1,2 @@
+* xref:auto-generated-bash-docs:src/main/entrypoint-sh.adoc[src/main/entrypoint-sh.adoc]
+* xref:auto-generated-bash-docs:build-sh.adoc[build-sh.adoc]
