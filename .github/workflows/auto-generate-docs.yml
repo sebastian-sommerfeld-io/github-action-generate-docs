@@ -66,7 +66,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Generate docs from bash scripts
-        uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@feat/auto-generate-bash-script-docs 
+        uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@feat/auto-generate-bash-script-docs
       - name: Commit and push
         uses: EndBug/add-and-commit@v9
         with:

@@ -56,12 +56,12 @@ function generateDocs() {
     DOCS_PATH=""
   fi
 
-  echo -e "$LOG_INFO [Step 1/3] Generate '$ANTORA_MODULE/pages/$DOCS_FILE_PATTERN.md' from '$SH_FILE"
+  echo "[INFO] [Step 1/3] Generate '$ANTORA_MODULE/pages/$DOCS_FILE_PATTERN.md' from '$SH_FILE"
   shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$MD_FILE"
   # todo ... translate md to adoc
   # todo ... remove first line from temp-adoc
 
-  echo -e "$LOG_INFO [Step 2/3] Create $ANTORA_MODULE/pages/$ADOC_FILE"
+  echo "[INFO] [Step 2/3] Create $ANTORA_MODULE/pages/$ADOC_FILE"
   mkdir -p "$ANTORA_MODULE/pages/$DOCS_PATH"
 
   echo "= $SH_FILENAME" > "$ANTORA_MODULE/pages/$ADOC_FILE"
@@ -80,7 +80,7 @@ function generateDocs() {
     cat "$MD_FILE"
   ) >> "$ANTORA_MODULE/pages/$ADOC_FILE"
 
-  echo -e "$LOG_INFO [Step 3/3] Remove all markdown files"
+  echo "[INFO] [Step 3/3] Remove all markdown files"
   find "docs" -name "*.md" -exec rm {} +
 }
 export -f generateDocs
@@ -91,7 +91,7 @@ export -f generateDocs
 # @example
 #    echo "test: $(generateNav)"
 function generateNav() {
-  echo -e "$LOG_INFO Generate nav.adoc partial for bash scripts"
+  echo "[INFO] Generate nav.adoc partial for bash scripts"
   touch "$ANTORA_MODULE/partials/nav.adoc"
   
   (
@@ -104,11 +104,11 @@ function generateNav() {
     done
   )
 
-  echo -e "$LOG_INFO Generate nav.adoc"
+  echo "[INFO] Generate nav.adoc"
   echo "* xref:$ANTORA_MODULE_NAME:index.adoc[]" > "$ANTORA_MODULE/nav.adoc"
   # echo "include::$ANTORA_MODULE_NAME:partial\$bash-script-docs/nav.adoc[]" >> "$ANTORA_MODULE/nav.adoc"
 
-  echo -e "$LOG_INFO Generate index.adoc"
+  echo "[INFO] Generate index.adoc"
   cp src/main/baseimage/assets/index-template.adoc "$ANTORA_MODULE/pages/index.adoc"
   # echo "= Bash Script Docs" > "$ANTORA_MODULE/pages/index.adoc"
   (
@@ -118,18 +118,18 @@ function generateNav() {
 }
 
 
-echo -e "$LOG_INFO Initialize directory structure"
+echo "[INFO] Initialize directory structure"
 rm -rf "$ANTORA_MODULE"
 mkdir "$ANTORA_MODULE"
 mkdir "$ANTORA_MODULE/pages"
 mkdir "$ANTORA_MODULE/partials"
 
 
-echo -e "$LOG_INFO Find all *.sh files and generate docs"
+echo "[INFO] Find all *.sh files and generate docs"
 find "$(pwd)" -type f -name "*.sh" -exec bash -c 'generateDocs "$0"' {} \;
 
 generateNav
 
-echo -e "$LOG_INFO Add module to antora.yml"
+echo "[INFO] Add module to antora.yml"
 line="  - modules/$ANTORA_MODULE_NAME/nav.adoc"
 grep -qxF "$line" "$ANTORA_YML" || echo "$line" >> "$ANTORA_YML"
