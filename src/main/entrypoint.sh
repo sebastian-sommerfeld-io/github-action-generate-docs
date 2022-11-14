@@ -5,8 +5,8 @@
 # @description Entrypoint for Github Action. This script generated docs for all bash scripts of
 # the respective repository and organizes them inside an Antora module.
 #
-# IMPORTANT: Do not run this script directly. This script is intended to run as part of a Github
-# Actions job.
+# IMPORTANT: Do not run this script directly! This script is intended to run as part of a Github
+# Actions job!
 #
 # ==== Arguments
 #
