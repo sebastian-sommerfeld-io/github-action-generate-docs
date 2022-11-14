@@ -56,7 +56,7 @@ function generateDocs() {
     DOCS_PATH=""
   fi
 
-  echo "[INFO] [Step 1/3] Generate '$ANTORA_MODULE/pages/$DOCS_FILE_PATTERN.md' from '$SH_FILE"
+  echo "[INFO] [Step 1/3] Generate '$ANTORA_MODULE/pages/$MD_FILE' from '$SH_FILE"
   shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$MD_FILE"
   # todo ... translate md to adoc
   # todo ... remove first line from temp-adoc
@@ -81,7 +81,7 @@ function generateDocs() {
   ) >> "$ANTORA_MODULE/pages/$ADOC_FILE"
 
   echo "[INFO] [Step 3/3] Remove markdown file"
-  # rm "$ANTORA_MODULE/pages/$MD_FILE"
+  rm "$ANTORA_MODULE/pages/$MD_FILE"
 }
 export -f generateDocs
 
@@ -116,6 +116,14 @@ function generateNav() {
     echo "include::$ANTORA_MODULE_NAME:partial\$/nav.adoc[]"
   ) >> "$ANTORA_MODULE/pages/index.adoc"
 }
+
+
+echo "[INFO] Version ..."
+shdoc --version
+
+echo "[INFO] Current dir = $(pwd)"
+echo "[INFO] Inside this folder is ..."
+ls -alF
 
 
 echo "[INFO] Initialize directory structure"
