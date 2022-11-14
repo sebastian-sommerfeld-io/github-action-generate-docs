@@ -1,7 +1,4 @@
-#
-# Install dependencies
-#
-FROM sommerfeldio/git:ci-build AS build
+FROM sommerfeldio/git:ci-build
 LABEL maintainer="sebastian@sommerfeld.io"
 
 USER root
@@ -16,14 +13,6 @@ WORKDIR /tmp/shdoc
 RUN make install
 
 COPY assets/index-template.adoc /tmp/index-template.adoc
-
-#
-# Expose actions scripts as entrypoint
-#
-FROM sommerfeldio/git:ci-build AS run
-LABEL maintainer="sebastian@sommerfeld.io"
-
-USER root
-
 COPY entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
