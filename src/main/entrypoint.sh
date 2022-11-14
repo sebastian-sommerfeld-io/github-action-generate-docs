@@ -23,8 +23,6 @@ ANTORA_YML="docs/antora.yml"
 export ANTORA_MODULE_NAME="auto-generated-bash-docs"
 export ANTORA_MODULE="docs/modules/$ANTORA_MODULE_NAME"
 
-export -f shdoc
-
 
 
 # @description Generate a dedicated documentation file for a given script and save file inside the 
