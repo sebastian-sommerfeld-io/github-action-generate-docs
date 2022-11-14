@@ -53,7 +53,7 @@ jobs:
       - name: hadolint
         uses: hadolint/hadolint-action@v2.0.0
         with:
-          dockerfile: src/main/actions/Dockerfile
+          dockerfile: src/main/action/Dockerfile
 
   lint-baseimage-dockerfile:
     runs-on: ubuntu-latest
