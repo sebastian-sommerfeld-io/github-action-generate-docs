@@ -1,2 +1,15 @@
-FROM ubuntu:22.10 AS build
+FROM sommerfeldio/git:ci-build
 LABEL maintainer="sebastian@sommerfeld.io"
+
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends make=4.3-4.1 \
+    && apt-get install -y --no-install-recommends gawk=1:5.1.0-1 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && git clone --recursive https://github.com/reconquest/shdoc \
+    && cd shdoc \
+    && make install
+
+USER sebastian
+COPY assets/index-template.adoc /home/sebastian/index-template.adoc
