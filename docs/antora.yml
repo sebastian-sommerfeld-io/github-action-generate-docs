@@ -1,7 +1,7 @@
 ---
 name: github-action-docs-from-bash-scripts-yml
 title: Github-Action Generate Docs from Bash Scripts
-version: main
+version: feat__auto-generate-bash-script-docs
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
