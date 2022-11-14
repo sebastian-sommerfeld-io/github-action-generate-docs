@@ -7,9 +7,9 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends gawk=1:5.1.0-1 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && git clone --recursive https://github.com/reconquest/shdoc \
-    && cd shdoc \
-    && make install
+    && git clone --recursive https://github.com/reconquest/shdoc /tmp/shdoc
+WORKDIR /tmp/shdoc
+RUN make install
 
 USER sebastian
 COPY assets/index-template.adoc /home/sebastian/index-template.adoc
