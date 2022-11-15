@@ -10,9 +10,14 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && git clone --recursive https://github.com/reconquest/shdoc /tmp/shdoc
 WORKDIR /tmp/shdoc
-RUN make install
+RUN make install \
+    && chown sebastian:sebastian $(which shdoc)
 
 COPY assets/index-template.adoc /tmp/index-template.adoc
+
+COPY generate-from-bash.sh /generate-from-bash.sh
 COPY entrypoint.sh /entrypoint.sh
+
+USER sebastian
 
 ENTRYPOINT ["/entrypoint.sh"]

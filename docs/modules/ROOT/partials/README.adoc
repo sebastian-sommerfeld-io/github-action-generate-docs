@@ -21,7 +21,7 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
   uses: actions/checkout@v3
 
 - name: Generate docs from bash scripts
-  uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@main
+  uses: sebastian-sommerfeld-io/github-action-generate-docs@main
 
 - name: Commit and push
   uses: EndBug/add-and-commit@v9
