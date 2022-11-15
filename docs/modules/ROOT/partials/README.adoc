@@ -32,6 +32,40 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
     add: docs/modules
 ----
 
+=== Bash script docs
+Make sure your bash script docs align with https://github.com/reconquest/shdoc.
+
+[source, bash]
+----
+#!/bin/bash
+# @file libexample
+# @brief A library that solves some common problems.
+# @description
+#     The project solves lots of problems:
+#      * Some problem
+#      * Some other problem
+
+FOO="bar"
+
+# @description My super function.
+# Not thread-safe.
+#
+# @example
+#    echo "test: $(say-hello World)"
+#
+# @arg $1 string A value to print
+#
+# @exitcode 0 If successful
+# @exitcode 1 If an empty string passed
+say-hello() {
+  if [[ ! "$1" ]]; then
+    return 1;
+  fi
+
+  echo "Hello $1"
+}
+----
+
 == Risks and Technical Debts
 Scale for Probability and Impact: Low, Medium and High
 

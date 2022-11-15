@@ -6,7 +6,8 @@
 # ``local/generate-docs-action:dev``) and run the image. When running this image locally the
 # ``docs/modules/AUTO-GENERATED`` Antora module is generated based in bash scripts from this repo.
 #
-# Keep in mind that the Docker container is run as root due to Github Action policy:
+# Keep in mind that the Docker container is run as root due to Github Action policy. Due to this
+# link:https://github.com/hadolint/hadolint/wiki/DL3002[Hadolint rule DL3002] is disabled.
 #
 # [quote, https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user]
 # ____
