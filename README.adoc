@@ -1,6 +1,5 @@
 = Github Action: Generate Docs from Bash Scripts
-:image-name: docs-from-bash-scripts
-:project-name: github-action-{image-name}
+:project-name: github-action-generate-docs
 :url-project: https://github.com/sebastian-sommerfeld-io/{project-name}
 :github-actions-url: {url-project}/actions/workflows
 :job-ci: ci.yml
