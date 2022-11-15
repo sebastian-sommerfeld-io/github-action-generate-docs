@@ -1,5 +1,5 @@
 ---
-name: github-action-generate-docs-yml
+name: github-action-generate-docs
 title: Github-Action Auto-Generate Docs
 version: main
 start_page: ROOT:index.adoc
