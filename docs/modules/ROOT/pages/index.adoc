@@ -1,4 +1,4 @@
-= Github-Action: Update antora.yml
+= Github-Action: Generate Docs from Bash Scripts
 include::ROOT:partial$vars.adoc[]
 
 include::ROOT:partial$README.adoc[]

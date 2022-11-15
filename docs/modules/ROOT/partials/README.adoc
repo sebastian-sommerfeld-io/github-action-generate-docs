@@ -12,7 +12,7 @@ image:{github-actions-url}/{job-release}/{badge}[Github Badge, link={github-acti
 _No inputs specified_
 
 == Outputs
-A new Antora module in `docs/modules/auto-generated-bash-docs` folder with generated asciidoc contents.
+A new Antora module in `docs/modules/auto-generated-bash-docs` folder with generated asciidoc contents. The action expects valid `docs/antora.yml` file.
 
 == Example usage
 [source, yaml]
@@ -21,7 +21,7 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
   uses: actions/checkout@v3
 
 - name: Generate docs from bash scripts
-  uses: sebastian-sommerfeld-io/github-action-docs-from-bash-scripts@main
+  uses: sebastian-sommerfeld-io/github-action-generate-docs@main
 
 - name: Commit and push
   uses: EndBug/add-and-commit@v9
@@ -32,12 +32,38 @@ A new Antora module in `docs/modules/auto-generated-bash-docs` folder with gener
     add: docs/modules
 ----
 
-== About the Docker Base Image
-This Github Action uses its own Base Image which is link:https://hub.docker.com/r/sommerfeldio/shdoc[hosted at Dockerhub]. The base image ships with all packages necessary for link:https://github.com/reconquest/shdoc[shdoc]. The image supports standalone usage as well.
+=== Bash script docs
+Make sure your bash script docs align with https://github.com/reconquest/shdoc.
 
 [source, bash]
 ----
-# docker run ...
+#!/bin/bash
+# @file libexample
+# @brief A library that solves some common problems.
+# @description
+#     The project solves lots of problems:
+#      * Some problem
+#      * Some other problem
+
+FOO="bar"
+
+# @description My super function.
+# Not thread-safe.
+#
+# @example
+#    echo "test: $(say-hello World)"
+#
+# @arg $1 string A value to print
+#
+# @exitcode 0 If successful
+# @exitcode 1 If an empty string passed
+say-hello() {
+  if [[ ! "$1" ]]; then
+    return 1;
+  fi
+
+  echo "Hello $1"
+}
 ----
 
 == Risks and Technical Debts

@@ -27,6 +27,7 @@ ls:
 
 ignore:
   - .adoc-links.json
+  - .hadolint.yml
   - .ls-lint.yml
   - .yamllint.yml
   - .gitpod.yml
