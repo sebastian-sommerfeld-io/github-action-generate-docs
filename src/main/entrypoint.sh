@@ -14,5 +14,5 @@
 # The script does not accept any parameters.
 
 
-echo "[INFO] Deletage to generate-from-bash.sh ================================================"
+echo "[INFO] Delegate to generate-from-bash.sh ================================================"
 bash /generate-from-bash.sh

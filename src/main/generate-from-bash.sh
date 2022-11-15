@@ -52,21 +52,29 @@ function generateDocs() {
 
   ADOC_FILE="$DOCS_FILE_PATTERN.adoc"
   MD_FILE="$DOCS_FILE_PATTERN.md"
+  TMP_FILE="$DOCS_FILE_PATTERN.md.adoc"
 
   DOCS_PATH=${DOCS_FILE_PATTERN%/*}
   if [ "$DOCS_PATH" = "$DOCS_FILE_PATTERN" ]; then
     DOCS_PATH=""
   fi
 
-  echo "[INFO] [Step 1/4] Create directory $ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
+  echo "[INFO] [Step 1/6] Create directory $ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
   mkdir -p "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
   
-  echo "[INFO] [Step 2/4] Generate '$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE' from '$SH_FILE"
-  shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE" 
-  # todo ... translate md to adoc
-  # todo ... remove first line from temp-adoc (still named *.md)
+  echo "[INFO] [Step 2/6] Generate '$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE' from '$SH_FILE"
+  shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
 
-  echo "[INFO] [Step 3/4] Create $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
+  echo "[INFO] [Step 3/6] Convert markdown to asciidoc"
+  source="$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
+  target="$ANTORA_MODULE/pages/$CONTENT_FOLDER/$TMP_FILE"
+  kramdoc -o "$target" "$source"
+  rm "$source"
+
+  echo "[INFO] [Step 4/6] Remove first line from temp-adoc $target"
+  sed -i '1d' "$target"
+
+  echo "[INFO] [Step 5/6] Create $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
   echo "= $SH_FILENAME" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
   (
     echo
@@ -80,11 +88,13 @@ function generateDocs() {
     echo "// +-----------------------------------------------+"
     echo
 
-    cat "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
+    cat "$target"
   ) >> "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
 
-  echo "[INFO] [Step 4/4] Remove markdown file"
-  rm "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
+  echo "[INFO] [Step 6/6] Remove temporary adoc file $target"
+  rm "$target"
+
+  echo "[DONE] Generated $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
 }
 export -f generateDocs
 
