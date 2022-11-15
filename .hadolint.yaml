@@ -1,0 +1,6 @@
+---
+ignored:
+  - DL3002
+  # |  Docker actions must be run by the default Docker user (root). Do not use the USER instruction
+  # |  in your Dockerfile, because you won't be able to access the GITHUB_WORKSPACE.
+  # |  https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions#user

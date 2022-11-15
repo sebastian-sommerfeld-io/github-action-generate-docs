@@ -11,13 +11,11 @@ RUN apt-get update \
     && git clone --recursive https://github.com/reconquest/shdoc /tmp/shdoc
 WORKDIR /tmp/shdoc
 RUN make install \
-    && chown sebastian:sebastian $(which shdoc)
+    && chown sebastian:sebastian "$(which shdoc)"
 
 COPY assets/index-template.adoc /tmp/index-template.adoc
 
 COPY generate-from-bash.sh /generate-from-bash.sh
 COPY entrypoint.sh /entrypoint.sh
-
-USER sebastian
 
 ENTRYPOINT ["/entrypoint.sh"]

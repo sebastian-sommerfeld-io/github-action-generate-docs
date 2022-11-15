@@ -134,7 +134,7 @@ mkdir "$ANTORA_MODULE/partials/$CONTENT_FOLDER"
 
 
 echo "[INFO] Find all *.sh files and generate docs"
-find "$(pwd)" -type f -name "*.sh" -exec bash -c 'generateDocs "$0"' {} \;
+find "$(pwd)" -type f -name "*.sh" -exec bash -c 'sleep 3 && generateDocs "$0"' {} \;
 
 generateNav
 
