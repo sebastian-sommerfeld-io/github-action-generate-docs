@@ -31,7 +31,7 @@ image:{github-actions-url}/{job-release}/{badge}[Github Badge, link={github-acti
 _No inputs specified_
 
 == Outputs
-A new Antora module in `docs/modules/auto-generated-bash-docs` folder with generated asciidoc contents.
+A new Antora module in `docs/modules/auto-generated-bash-docs` folder with generated asciidoc contents. The action expects valid `docs/antora.yml` file.
 
 == Example usage
 [source, yaml]
