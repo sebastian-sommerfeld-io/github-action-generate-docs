@@ -14,7 +14,7 @@ RUN apt-get update \
 WORKDIR /tmp/shdoc
 RUN make install \
     && chown sebastian:sebastian "$(which shdoc)" \
-    && gem install kramdown-asciidoc
+    && gem install kramdown-asciidoc:2.1.0
 
 COPY assets/index-template.adoc /tmp/index-template.adoc
 
