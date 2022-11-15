@@ -113,7 +113,12 @@ function generateNav() {
     find "." -name '*-sh.adoc' -print0 | while IFS= read -r -d '' file
     do
       file="${file#./}"
-      echo "* xref:$ANTORA_MODULE_NAME:$CONTENT_FOLDER/${file}[${file}]" >> "../../partials/$CONTENT_FOLDER/nav.adoc"
+
+      old="-sh.adoc"
+      new=".sh"
+      scriptname="${file/"$old"/"$new"}"
+
+      echo "* xref:$ANTORA_MODULE_NAME:$CONTENT_FOLDER/${file}[${scriptname}]" >> "../../partials/$CONTENT_FOLDER/nav.adoc"
     done
   )
 
