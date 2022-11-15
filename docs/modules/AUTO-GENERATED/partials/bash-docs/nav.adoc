@@ -1,3 +1,3 @@
-* xref:AUTO-GENERATED:bash-docs/src/main/entrypoint-sh.adoc[src/main/entrypoint-sh.adoc]
-* xref:AUTO-GENERATED:bash-docs/src/main/generate-from-bash-sh.adoc[src/main/generate-from-bash-sh.adoc]
-* xref:AUTO-GENERATED:bash-docs/src/test/test-locally-sh.adoc[src/test/test-locally-sh.adoc]
+* xref:AUTO-GENERATED:bash-docs/src/main/entrypoint-sh.adoc[src/main/entrypoint.sh]
+* xref:AUTO-GENERATED:bash-docs/src/main/generate-from-bash-sh.adoc[src/main/generate-from-bash.sh]
+* xref:AUTO-GENERATED:bash-docs/src/test/test-locally-sh.adoc[src/test/test-locally.sh]
