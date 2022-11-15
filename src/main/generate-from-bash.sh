@@ -58,14 +58,15 @@ function generateDocs() {
     DOCS_PATH=""
   fi
 
-  echo "[INFO] [Step 1/3] Generate '$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE' from '$SH_FILE"
-  shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
+  echo "[INFO] [Step 1/4] Create directory $ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
+  mkdir -p "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
+  
+  echo "[INFO] [Step 2/4] Generate '$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE' from '$SH_FILE"
+  shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE" 
   # todo ... translate md to adoc
   # todo ... remove first line from temp-adoc (still named *.md)
 
-  echo "[INFO] [Step 2/3] Create $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
-  mkdir -p "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
-
+  echo "[INFO] [Step 3/4] Create $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
   echo "= $SH_FILENAME" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
   (
     echo
@@ -82,7 +83,7 @@ function generateDocs() {
     cat "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
   ) >> "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
 
-  echo "[INFO] [Step 3/3] Remove markdown file"
+  echo "[INFO] [Step 4/4] Remove markdown file"
   rm "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
 }
 export -f generateDocs
@@ -134,7 +135,7 @@ mkdir "$ANTORA_MODULE/partials/$CONTENT_FOLDER"
 
 
 echo "[INFO] Find all *.sh files and generate docs"
-find "$(pwd)" -type f -name "*.sh" -exec bash -c 'sleep 3 && generateDocs "$0"' {} \;
+find "$(pwd)" -type f -name "*.sh" -exec bash -c 'generateDocs "$0"' {} \;
 
 generateNav
 
