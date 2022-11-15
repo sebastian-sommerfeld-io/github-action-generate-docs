@@ -18,7 +18,7 @@
 # When running the image locally the ``docs/modules/AUTO-GENERATED`` directory is owned by ``root``.
 # To remove this directory ``sudo`` is required.
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 

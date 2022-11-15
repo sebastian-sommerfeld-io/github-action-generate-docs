@@ -10,7 +10,7 @@
 # IMPORTANT: Do not run this script directly! This script is intended to run as part of a Github
 # Actions job!
 #
-# ==== Arguments
+# === Script Arguments
 #
 # The script does not accept any parameters.
 
