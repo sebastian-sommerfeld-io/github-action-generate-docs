@@ -28,8 +28,8 @@ The script does not accept any parameters.
 
 == Index
 
-* <<generatedocs,generateDocs>>
-* <<generatenav,generateNav>>
+* <<_generatedocs,generateDocs>>
+* <<_generatenav,generateNav>>
 
 === generateDocs
 
