@@ -59,22 +59,27 @@ function generateDocs() {
     DOCS_PATH=""
   fi
 
-  echo "[INFO] [Step 1/6] Create directory $ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
+  echo "[INFO] [Step 1/7] Create directory $ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
   mkdir -p "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$DOCS_PATH"
   
-  echo "[INFO] [Step 2/6] Generate '$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE' from '$SH_FILE"
+  echo "[INFO] [Step 2/7] Generate '$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE' from '$SH_FILE"
   shdoc < "$SH_FILE" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
 
-  echo "[INFO] [Step 3/6] Convert markdown to asciidoc"
+  echo "[INFO] [Step 3/7] Convert markdown to asciidoc"
   source="$ANTORA_MODULE/pages/$CONTENT_FOLDER/$MD_FILE"
   target="$ANTORA_MODULE/pages/$CONTENT_FOLDER/$TMP_FILE"
   kramdoc -o "$target" "$source"
   rm "$source"
 
-  echo "[INFO] [Step 4/6] Remove first line from temp-adoc $target"
+  echo "[INFO] [Step 4/7] Remove first line from temp-adoc $target"
   sed -i '1d' "$target"
 
-  echo "[INFO] [Step 5/6] Create $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
+  echo "[INFO] [Step 5/7] Fix Index-Navigation for temp-adoc $target"
+  old="<<"
+  new="<<_"
+  sed -i "s/$old/$new/g" "$target"
+
+  echo "[INFO] [Step 6/7] Create $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
   echo "= $SH_FILENAME" > "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
   (
     echo
@@ -91,7 +96,7 @@ function generateDocs() {
     cat "$target"
   ) >> "$ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
 
-  echo "[INFO] [Step 6/6] Remove temporary adoc file $target"
+  echo "[INFO] [Step 7/7] Remove temporary adoc file $target"
   rm "$target"
 
   echo "[DONE] Generated $ANTORA_MODULE/pages/$CONTENT_FOLDER/$ADOC_FILE"
