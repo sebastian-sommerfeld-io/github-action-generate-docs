@@ -1,6 +1,6 @@
 ---
 name: github-action-generate-docs
-title: Github-Action Auto-Generate Docs
+title: Github Action Generate Docs
 version: main
 start_page: ROOT:index.adoc
 nav:
