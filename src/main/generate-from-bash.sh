@@ -123,7 +123,7 @@ function generateNav() {
       new=".sh"
       scriptname="${file/"$old"/"$new"}"
 
-      echo "* xref:$ANTORA_MODULE_NAME:$CONTENT_FOLDER/${file}[\`${scriptname}\`]" >> "../../partials/$CONTENT_FOLDER/nav.adoc"
+      echo "* \`xref:$ANTORA_MODULE_NAME:$CONTENT_FOLDER/${file}[${scriptname}]\`" >> "../../partials/$CONTENT_FOLDER/nav.adoc"
     done
   )
 
