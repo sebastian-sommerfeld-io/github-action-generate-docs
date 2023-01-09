@@ -1,4 +1,4 @@
-FROM sommerfeldio/git:ci-build
+FROM sommerfeldio/git:0.1.0
 LABEL maintainer="sebastian@sommerfeld.io"
 
 USER root
